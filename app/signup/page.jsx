@@ -1,3 +1,5 @@
+"use client";
+
 import SignupForm from "./SignupForm";
 import Link from "next/link";
 import Image from "next/image";
