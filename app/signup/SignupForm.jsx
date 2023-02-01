@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 
 export default function SignupForm() {
   return (
     <form
       onSubmit
-      className="flex flex-col justify-between h-full max-h-[400px] items-center lg:items-start w-full max-w-lg lg:w-2/5"
+      className="flex h-full max-h-[400px] w-full max-w-lg flex-col items-center justify-between lg:w-2/5 lg:items-start"
     >
       <div className="text-center lg:text-left">
         <h1 className="text-4xl font-bold">Sign up</h1>
         <p>Start you next adventure</p>
       </div>
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex w-full flex-col gap-3">
         <label htmlFor="name">
           <input
             id="name"
             type="text"
             placeholder="Your Name"
-            className=" duration-200 py-3 border-b border-gray-600 w-full focus:outline-none hover:placeholder:text-gray-600 hover:duration-200 focus:border-b-4"
+            className=" w-full border-b border-gray-600 py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none"
           />
         </label>
         <label htmlFor="email">
@@ -24,7 +24,7 @@ export default function SignupForm() {
             id="email"
             type="email"
             placeholder="Your Email"
-            className="duration-200 py-3 border-b border-gray-600 w-full focus:outline-none hover:placeholder:text-gray-600 hover:duration-200 focus:border-b-4"
+            className="w-full border-b border-gray-600 py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none"
           />
         </label>
         <label htmlFor="password">
@@ -32,20 +32,23 @@ export default function SignupForm() {
             id="password"
             type="password"
             placeholder="Your Password"
-            className=" duration-200 py-3 border-b border-gray-600 w-full focus:outline-none hover:placeholder:text-gray-600 hover:duration-200 focus:border-b-4"
+            className=" w-full border-b border-gray-600 py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none"
           />
         </label>
       </div>
       <div className="w-full">
         <button
           type="button"
-          className="w-full border-gray-900 bg-gray-900 disabled:bg-gray-500 hover:bg-slate-700 duration-200 text-white border-2 px-6 py-2 rounded-full"
+          className="w-full rounded-full border-2 border-gray-900 bg-gray-900 px-6 py-2 text-white duration-200 hover:bg-slate-700 disabled:bg-gray-500"
         >
-          Test Test
+          Sign up
         </button>
         <div className="mt-4 flex gap-1 text-center lg:text-left">
           Already have a user?
-          <a href="/login" className=" underline underline-offset-2 font-medium">
+          <a
+            href="/login"
+            className=" font-medium underline underline-offset-2"
+          >
             Go to Login
           </a>
         </div>
