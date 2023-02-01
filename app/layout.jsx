@@ -1,7 +1,7 @@
-import './globals.css';
+import "./globals.css";
 
 export default function RootLayout({ children }) {
-  const data = 'res';
+  const data = "res";
   return (
     <html lang="en">
       {/*
