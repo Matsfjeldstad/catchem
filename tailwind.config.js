@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
   content: [
     "./app/**/*.{js,ts,jsx}",
     "./pages/**/*.{js,ts,jsx}",
@@ -8,6 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'fade-in': 'fadeIn 700ms ease-in-out',
+        'fade-out': 'fadeOut 700ms ease-in-out',
+        'bg-in': 'bgIn 500ms ease-in-out',
+        'bg-out': 'bgOut 500ms ease-in-out',
+      },
+      colors: {
+        transparent: 'transparent',
+        darkGray: '#131313',
+        offWhite: '#EBEBEB',
+        white: '#fff',
+      },
       backgroundImage: {
         login: "url('/img/lucas-calloch-P-yzuyWFEIk-unsplash.jpg')",
       },
