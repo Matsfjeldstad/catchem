@@ -4,7 +4,7 @@ import LogInForm from "./LogInForm";
 
 export default function page() {
   return (
-    <main className="mx-auto flex h-screen max-w-[1600px] flex-col items-center gap-20 p-10 md:p-6 lg:flex-row">
+    <main className="mx-auto flex h-screen w-full flex-col items-center gap-20 p-10 md:p-6 lg:flex-row">
       <div className="relative hidden h-full w-3/5 overflow-hidden rounded-3xl bg-gray-800 bg-login bg-cover p-8 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-black/60 lg:block">
         <Link href="/signup">
           <button

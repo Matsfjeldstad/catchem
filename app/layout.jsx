@@ -1,4 +1,5 @@
 import "./globals.css";
+import NavBar from "./components/NavBar";
 
 export default function RootLayout({ children }) {
   const data = "res";
@@ -9,7 +10,10 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body className="flex flex-col lg:flex-row">
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }
