@@ -21,6 +21,7 @@ module.exports = {
       },
       backgroundImage: {
         login: "url('/img/lucas-calloch-P-yzuyWFEIk-unsplash.jpg')",
+        jungleHero: "url('/img/qa2s0afwydh91.webp')",
       },
     },
   },
