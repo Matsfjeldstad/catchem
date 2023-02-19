@@ -12,11 +12,15 @@ module.exports = {
         'fade-out': 'fadeOut 700ms ease-in-out',
         'bg-in': 'bgIn 500ms ease-in-out',
         'bg-out': 'bgOut 500ms ease-in-out',
+        'card-incoming': 'cardIncoming 500ms ease-in-out',
+        'card-dislike': 'cardDislike 500ms ease-in-out',
+        'card-like': 'cardLike 500ms ease-in-out',
       },
       colors: {
         transparent: 'transparent',
         darkGray: '#131313',
         offWhite: '#EBEBEB',
+        redish: '#FF6A6A',
         white: '#fff',
       },
       backgroundImage: {
