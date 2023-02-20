@@ -3,6 +3,7 @@
 'use client';
 
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -38,8 +39,7 @@ export default function PokemonCard() {
       const randomJokeArray = Math.floor(
         Math.random() * chuckNorrisResponse.total,
       );
-      const fallbackJoke =
-        "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
+      const fallbackJoke = "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
 
       // console.log(
       //   chuckNorrisResponse.total > 0
@@ -48,18 +48,16 @@ export default function PokemonCard() {
       // );
       const currentPokemonName = pokemonResponse.name;
 
-      const chuckJoke =
-        chuckNorrisResponse.total > 0
-          ? chuckNorrisResponse.result[randomJokeArray].value
-          : fallbackJoke;
+      const currentChuckJoke = chuckNorrisResponse.total > 0
+        ? chuckNorrisResponse.result[randomJokeArray].value
+        : fallbackJoke;
       const currentPokemonId = pokemonResponse.id;
       const pokemonFirstName = faker.name.firstName();
-      const currentPokemonIMG =
-        pokemonResponse.sprites.other.home.front_default;
+      const currentPokemonIMG = pokemonResponse.sprites.other.home.front_default;
 
       setPokemonName(`${pokemonFirstName} the ${currentPokemonName}`);
       setPokemonIMG(currentPokemonIMG);
-      setChuckJoke(chuckJoke);
+      setChuckJoke(currentChuckJoke);
       setPokemonId(currentPokemonId);
       setTimeout(() => {
         setAnimateState('animate-card-incoming');

@@ -1,7 +1,8 @@
-import "../app/globals.css";
-import pokeball from "../public/pokeball.svg";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import '../app/globals.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import pokeball from '../public/pokeball.svg';
 
 export default function FourOhFour() {
   return (

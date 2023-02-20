@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import SignupForm from "./SignupForm";
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import SignupForm from './SignupForm';
 
 export default function page() {
   return (
