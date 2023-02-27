@@ -1,10 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+// eslint-disable-next-line import/no-unresolved
+import { supabase } from 'lib/supabaseClient';
 
 export default function LogInForm() {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -19,8 +24,20 @@ export default function LogInForm() {
         .min(8, 'Password needs to be atleast 8 character ')
         .required('Password is Required'),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
+    onSubmit: async (values) => {
+      setLoading('loading');
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      if (!error) {
+        setErrorMessage('');
+        console.log(data);
+        setLoading('Success!');
+      } else {
+        console.error(error.message);
+        setErrorMessage(error.message);
+      }
     },
   });
 
@@ -80,11 +97,12 @@ export default function LogInForm() {
         </label>
       </div>
       <div className="w-full">
+        <div>{errorMessage}</div>
         <button
           type="submit"
           className="w-full rounded-full border-2 border-gray-900 bg-gray-900 px-6 py-2 text-white duration-200 hover:bg-slate-700 disabled:bg-gray-500"
         >
-          Login
+          {loading || 'login'}
         </button>
         <div className="mt-4 text-center lg:text-left">
           Forgot password?

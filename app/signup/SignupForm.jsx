@@ -1,10 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+// eslint-disable-next-line import/no-unresolved
+import { supabase } from 'lib/supabaseClient';
 
 export default function SignupForm() {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState('');
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -21,8 +27,24 @@ export default function SignupForm() {
         .min(8, 'Password needs to be atleast 8 character ')
         .required('Password is Required'),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
+    onSubmit: async (values) => {
+      setLoading('loading...');
+      const { data, error } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+        options: {
+          data: {
+            name: values.name,
+          },
+        },
+      });
+      if (!error) {
+        console.log(data);
+        router.push('/app');
+      } else {
+        setErrorMessage(error);
+        setLoading('signup');
+      }
     },
   });
 
@@ -104,11 +126,12 @@ export default function SignupForm() {
         </label>
       </div>
       <div className="w-full">
+        <div>{errorMessage}</div>
         <button
           type="submit"
           className="w-full rounded-full border-2 border-gray-900 bg-gray-900 px-6 py-2 text-white duration-200 hover:bg-slate-700 disabled:bg-gray-500"
         >
-          Sign up
+          {loading || 'Sign up'}
         </button>
         <div className="mt-4 flex gap-1 text-center lg:text-left">
           Already have a user?
