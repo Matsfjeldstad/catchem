@@ -1,8 +1,11 @@
-import "./globals.css";
-import NavBar from "./components/NavBar";
+import './globals.css';
+import React from 'react';
+import NavBar from './components/NavBar';
 
+// eslint-disable-next-line react/prop-types
 export default function RootLayout({ children }) {
-  const data = "res";
+  // eslint-disable-next-line no-unused-vars
+  const data = 'res';
   return (
     <html lang="en">
       {/*

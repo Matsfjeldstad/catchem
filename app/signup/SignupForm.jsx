@@ -1,27 +1,28 @@
-"use client";
+'use client';
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export default function SignupForm() {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
 
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is Required"),
+      name: Yup.string().required('Name is Required'),
       email: Yup.string()
-        .email("Email is not valid")
-        .required("Email is Required"),
+        .email('Email is not valid')
+        .required('Email is Required'),
       password: Yup.string()
-        .min(8, "Password needs to be atleast 8 character ")
-        .required("Password is Required"),
+        .min(8, 'Password needs to be atleast 8 character ')
+        .required('Password is Required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values));
     },
   });
 
@@ -41,7 +42,7 @@ export default function SignupForm() {
               {formik.errors.name}
             </span>
           ) : (
-            "Name"
+            'Name'
           )}
           <input
             id="name"
@@ -52,8 +53,8 @@ export default function SignupForm() {
             onBlur={formik.handleBlur}
             className={`w-full border-b ${
               formik.touched.name && formik.errors.name
-                ? "border-b-4 border-red-400"
-                : "border-gray-600"
+                ? 'border-b-4 border-red-400'
+                : 'border-gray-600'
             } py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none`}
           />
         </label>
@@ -63,7 +64,7 @@ export default function SignupForm() {
               {formik.errors.email}
             </span>
           ) : (
-            "Email"
+            'Email'
           )}
           <input
             id="email"
@@ -74,8 +75,8 @@ export default function SignupForm() {
             onBlur={formik.handleBlur}
             className={`w-full border-b ${
               formik.touched.email && formik.errors.email
-                ? "border-b-4 border-red-400"
-                : "border-gray-600"
+                ? 'border-b-4 border-red-400'
+                : 'border-gray-600'
             } py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none`}
           />
         </label>
@@ -85,7 +86,7 @@ export default function SignupForm() {
               {formik.errors.password}
             </span>
           ) : (
-            "Password"
+            'Password'
           )}
           <input
             id="password"
@@ -96,8 +97,8 @@ export default function SignupForm() {
             onBlur={formik.handleBlur}
             className={`w-full border-b ${
               formik.touched.password && formik.errors.password
-                ? "border-b-4 border-red-400"
-                : "border-gray-600"
+                ? 'border-b-4 border-red-400'
+                : 'border-gray-600'
             } py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none`}
           />
         </label>

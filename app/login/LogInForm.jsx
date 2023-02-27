@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export default function LogInForm() {
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
 
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Email is not valid")
-        .required("Email is Required"),
+        .email('Email is not valid')
+        .required('Email is Required'),
       password: Yup.string()
-        .min(8, "Password needs to be atleast 8 character ")
-        .required("Password is Required"),
+        .min(8, 'Password needs to be atleast 8 character ')
+        .required('Password is Required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values));
     },
   });
 
@@ -39,7 +40,7 @@ export default function LogInForm() {
               {formik.errors.email}
             </span>
           ) : (
-            "Email"
+            'Email'
           )}
           <input
             id="email"
@@ -50,8 +51,8 @@ export default function LogInForm() {
             onBlur={formik.handleBlur}
             className={`w-full border-b ${
               formik.touched.email && formik.errors.email
-                ? "border-b-4 border-red-400"
-                : "border-gray-600"
+                ? 'border-b-4 border-red-400'
+                : 'border-gray-600'
             } py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none`}
           />
         </label>
@@ -61,7 +62,7 @@ export default function LogInForm() {
               {formik.errors.password}
             </span>
           ) : (
-            "Password"
+            'Password'
           )}
           <input
             id="password"
@@ -72,8 +73,8 @@ export default function LogInForm() {
             onBlur={formik.handleBlur}
             className={`w-full border-b ${
               formik.touched.password && formik.errors.password
-                ? "border-b-4 border-red-400"
-                : "border-gray-600"
+                ? 'border-b-4 border-red-400'
+                : 'border-gray-600'
             } py-3 duration-200 hover:duration-200 hover:placeholder:text-gray-600 focus:border-b-4 focus:outline-none`}
           />
         </label>
@@ -87,9 +88,9 @@ export default function LogInForm() {
         </button>
         <div className="mt-4 text-center lg:text-left">
           Forgot password?
-          <a className=" font-medium underline underline-offset-2">
+          <div className=" font-medium underline underline-offset-2">
             request new password
-          </a>
+          </div>
         </div>
       </div>
     </form>

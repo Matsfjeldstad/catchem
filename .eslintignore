@@ -1,0 +1,8 @@
+
+*.config.*
+
+/.husky
+
+/.next
+
+/node_modules

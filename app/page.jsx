@@ -1,13 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../public/catchem-logo.svg";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../public/catchem-logo.svg';
 
 function LoggedOutButtons() {
   return (
     <div className="flex w-full gap-3">
       <Link href="/login" className="w-full">
         <button
-          typeof="button"
+          type="button"
           className="w-full max-w-sm rounded-full bg-offWhite px-6 py-3 text-darkGray duration-200 hover:scale-105 disabled:bg-gray-500"
         >
           Login
@@ -15,7 +16,7 @@ function LoggedOutButtons() {
       </Link>
       <Link href="/signup" className="w-full">
         <button
-          typeof="button"
+          type="button"
           className="w-full max-w-sm rounded-full border-2 border-offWhite px-6 py-3 text-offWhite backdrop-blur duration-200 hover:scale-105 disabled:bg-gray-500"
         >
           Signup
@@ -29,7 +30,7 @@ function LoggedInButtons() {
   return (
     <Link href="/" className="w-full">
       <button
-        typeof="button"
+        type="button"
         className="w-full rounded-full bg-offWhite px-6 py-3 text-darkGray duration-200 hover:scale-105 disabled:bg-gray-500"
       >
         Launch App
