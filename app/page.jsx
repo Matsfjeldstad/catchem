@@ -1,6 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+// eslint-disable-next-line import/no-unresolved
+import { supabase } from 'lib/supabaseClient';
 import logo from '../public/catchem-logo.svg';
 
 function LoggedOutButtons() {
@@ -39,7 +43,23 @@ function LoggedInButtons() {
   );
 }
 export default function Home() {
-  const logdin = true;
+  const [logedIn, setLogedIn] = useState(false);
+  async function getProfile() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      setLogedIn(true);
+    } else {
+      setLogedIn(false);
+    }
+  }
+  useEffect(() => {
+    getProfile();
+  }, [localStorage.getItem('sb-ytenlezqxrxolhlxtqts-auth-token')]);
+
+  const logdin = logedIn;
 
   return (
     <main className="w-full lg:w-[calc(100vw_-_120px)]">
