@@ -9,13 +9,17 @@ import PropTypes from 'prop-types';
 
 export default function NavLinks({ open }) {
   const router = useRouter();
-  const [loading, setLoading] = useState('');
   const [logedIn, setLogedIn] = useState(true);
+  const [authState, setAuthState] = useState('SIGNED_OUT');
 
   useEffect(() => {
     // eslint-disable-next-line no-use-before-define
     getProfile();
-  }, []);
+    supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_OUT') setAuthState('SIGNED_OUT');
+      if (event === 'SIGNED_IN') setAuthState('SIGNED_IN');
+    });
+  }, [authState]);
 
   async function getProfile() {
     const {
@@ -28,6 +32,7 @@ export default function NavLinks({ open }) {
       setLogedIn(false);
     }
   }
+
   NavLinks.propTypes = {
     open: PropTypes.bool.isRequired,
   };
@@ -62,7 +67,6 @@ export default function NavLinks({ open }) {
           } w-fit text-5xl font-bold uppercase transition-transform hover:translate-x-2 lg:text-7xl`}
           type="button"
           onClick={async () => {
-            setLoading('Loading...');
             const { error } = await supabase.auth.signOut();
             setLogedIn(false);
             if (!error) {
@@ -70,7 +74,7 @@ export default function NavLinks({ open }) {
             }
           }}
         >
-          {loading || 'Log out'}
+          Log out
         </button>
       ) : (
         <Link

@@ -38,15 +38,13 @@ export default function PokemonCard() {
       const randomJokeArray = Math.floor(
         Math.random() * chuckNorrisResponse.total,
       );
-      const fallbackJoke =
-        "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
+      const fallbackJoke = "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
 
       const currentPokemonName = pokemonResponse.name;
 
-      const currentChuckJoke =
-        chuckNorrisResponse.total > 0
-          ? chuckNorrisResponse.result[randomJokeArray].value
-          : fallbackJoke;
+      const currentChuckJoke = chuckNorrisResponse.total > 0
+        ? chuckNorrisResponse.result[randomJokeArray].value
+        : fallbackJoke;
       const currentPokemonId = pokemonResponse.id;
       const pokemonFirstName = faker.name.firstName();
       const currentPokemonIMG = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${count}.png`;

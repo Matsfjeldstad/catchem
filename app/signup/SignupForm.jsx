@@ -40,7 +40,7 @@ export default function SignupForm() {
       });
       if (!error) {
         console.log(data);
-        router.push('/app');
+        router.push('/signup/confirm-email');
       } else {
         setErrorMessage(error);
         setLoading('signup');
