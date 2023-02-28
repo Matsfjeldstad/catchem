@@ -6,10 +6,12 @@ import { useRouter } from 'next/navigation';
 // eslint-disable-next-line import/no-unresolved
 import { supabase } from 'lib/supabaseClient';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { checkSession } from '@/utils/auth';
 
 export default function NavLinks({ open }) {
   const router = useRouter();
-  const [logedIn, setLogedIn] = useState(true);
+  const [logedIn, setLogedIn] = useState(false);
   const [authState, setAuthState] = useState('SIGNED_OUT');
 
   useEffect(() => {
@@ -22,11 +24,8 @@ export default function NavLinks({ open }) {
   }, [authState]);
 
   async function getProfile() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (user) {
+    const session = await checkSession();
+    if (session) {
       setLogedIn(true);
     } else {
       setLogedIn(false);
@@ -52,13 +51,26 @@ export default function NavLinks({ open }) {
       >
         Home
       </Link>
+      {auth ? (
+        <Link
+          href="/app"
+          className={` ${
+            open ? 'animate-fade-in' : 'animate-fade-out'
+          } w-fit text-5xl font-bold uppercase transition-transform hover:translate-x-2 lg:text-7xl`}
+        >
+          app
+        </Link>
+      ) : (
+        ''
+      )}
+
       <Link
-        href={auth ? '/app' : '/login'}
+        href={auth ? '/app/likes' : '/login'}
         className={` ${
           open ? 'animate-fade-in' : ''
         } w-fit text-5xl font-bold uppercase transition-transform hover:translate-x-2 lg:text-7xl`}
       >
-        {auth ? 'Your likes' : 'login'}
+        {auth ? 'Your likes' : 'Log in'}
       </Link>
       {auth ? (
         <button
@@ -71,6 +83,7 @@ export default function NavLinks({ open }) {
             setLogedIn(false);
             if (!error) {
               router.push('/');
+              router.refresh();
             }
           }}
         >
@@ -84,7 +97,7 @@ export default function NavLinks({ open }) {
           href="/signup"
         >
           {' '}
-          Sign in
+          Sign up
         </Link>
       )}
     </div>
