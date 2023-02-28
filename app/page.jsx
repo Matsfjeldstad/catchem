@@ -57,7 +57,7 @@ export default function Home() {
   }
   useEffect(() => {
     getProfile();
-  }, [localStorage.getItem('sb-ytenlezqxrxolhlxtqts-auth-token')]);
+  }, []);
 
   const logdin = logedIn;
 

@@ -65,8 +65,6 @@ export default function NavLinks({ open }) {
             setLoading('Loading...');
             const { error } = await supabase.auth.signOut();
             setLogedIn(false);
-            // const { data } = await supabase.auth.getUser();
-            // console.log(data);
             if (!error) {
               router.push('/');
             }
