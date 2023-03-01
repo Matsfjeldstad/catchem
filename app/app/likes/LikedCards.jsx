@@ -8,6 +8,12 @@ export default function LikedCards() {
   const [loading, setLoading] = useState(true);
   const [tableData, setTableData] = useState([]);
 
+  /**
+  Retrieves data from the "your_liked_pokemon" table in Supabase.
+  @async
+  @function getObject
+  @returns {Promise<void>} Promise object representing the retrieved data or error message
+  */
   async function getObject() {
     const { data, error } = await supabase
       .from('your_liked_pokemon')

@@ -59,7 +59,9 @@ export default function Page({ params }) {
   const [pokemonObject, setPokemonObject] = useState({});
   const router = useRouter();
   const { id } = params;
-
+  /**
+Async function that fetches the pokemon details from the database.
+*/
   async function getPokemonDetails() {
     const { data, error } = await supabase
       .from('your_liked_pokemon')
@@ -89,7 +91,6 @@ export default function Page({ params }) {
           id="pokemonDetails"
           className=" z-30 flex w-full flex-col items-center gap-3 text-center"
         >
-          {' '}
           {pokemonObject.pokemon_name ? (
             <PokemonDetails pokemonObject={pokemonObject} />
           ) : (
@@ -102,7 +103,6 @@ export default function Page({ params }) {
       ) : (
         'loading'
       )}
-      {/* <PokemonStats pokemonObject={pokemonObject} /> */}
     </main>
   );
 }
