@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 // eslint-disable-next-line import/no-unresolved
-import { supabase } from 'lib/supabaseClient';
+import { checkSession } from 'utils/auth';
 import logo from '../public/catchem-logo.svg';
 
 function LoggedOutButtons() {
@@ -32,7 +32,7 @@ function LoggedOutButtons() {
 
 function LoggedInButtons() {
   return (
-    <Link href="/" className="w-full">
+    <Link href="/app" className="w-full">
       <button
         type="button"
         className="w-full rounded-full bg-offWhite px-6 py-3 text-darkGray duration-200 hover:scale-105 disabled:bg-gray-500"
@@ -45,11 +45,9 @@ function LoggedInButtons() {
 export default function Home() {
   const [logedIn, setLogedIn] = useState(false);
   async function getProfile() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const session = await checkSession();
 
-    if (user) {
+    if (session) {
       setLogedIn(true);
     } else {
       setLogedIn(false);
@@ -59,7 +57,7 @@ export default function Home() {
     getProfile();
   }, []);
 
-  const logdin = logedIn;
+  const auth = logedIn;
 
   return (
     <main className="w-full lg:w-[calc(100vw_-_120px)]">
@@ -72,7 +70,7 @@ export default function Home() {
           <h2 className="text-center text-xl font-normal text-white">
             The Ultimate Pokemon Experience
           </h2>
-          {logdin ? <LoggedInButtons /> : <LoggedOutButtons />}
+          {auth ? <LoggedInButtons /> : <LoggedOutButtons />}
         </div>
       </section>
     </main>

@@ -1,9 +1,27 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import LogInForm from './LogInForm';
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { checkSession } from '@/utils/auth';
 
 export default function page() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    async function checkAndRedirect() {
+      const hasSession = await checkSession();
+      if (hasSession) {
+        router.push('/');
+      }
+    }
+    checkAndRedirect();
+  }, [router]);
+
   return (
     <main className="mx-auto flex h-screen w-full flex-col items-center gap-20 p-10 md:p-6 lg:flex-row">
       <div className="relative hidden h-full w-3/5 overflow-hidden rounded-3xl bg-gray-800 bg-login bg-cover p-8 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-black/60 lg:block">

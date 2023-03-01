@@ -5,8 +5,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // eslint-disable-next-line import/no-unresolved
 import { supabase } from 'lib/supabaseClient';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function LogInForm() {
+  const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState('');
 
@@ -30,10 +33,11 @@ export default function LogInForm() {
         email: values.email,
         password: values.password,
       });
-      if (!error) {
+      if (data && !error) {
         setErrorMessage('');
         console.log(data);
         setLoading('Success!');
+        router.push('/app');
       } else {
         console.error(error.message);
         setErrorMessage(error.message);
@@ -104,11 +108,23 @@ export default function LogInForm() {
         >
           {loading || 'login'}
         </button>
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-4 flex w-full justify-center gap-2  text-center lg:justify-start lg:text-left">
+          Dont have a user?
+          <Link
+            href="/signup"
+            className=" font-medium underline underline-offset-2"
+          >
+            Sign up here
+          </Link>
+        </div>
+        <div className="mt-4 flex w-full justify-center gap-2 text-center  lg:justify-start lg:text-left">
           Forgot password?
-          <div className=" font-medium underline underline-offset-2">
-            request new password
-          </div>
+          <Link
+            href="/forgot-password"
+            className=" font-medium underline underline-offset-2"
+          >
+            Request new password
+          </Link>
         </div>
       </div>
     </form>
