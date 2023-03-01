@@ -7,6 +7,10 @@ import Link from 'next/link';
 import { checkSession } from 'utils/auth';
 import logo from '../public/catchem-logo.svg';
 
+/**
+ * React component that renders the buttons for users who are not logged in.
+ * @returns {React.ReactNode} The rendered component.
+ */
 function LoggedOutButtons() {
   return (
     <div className="flex w-full gap-3">
@@ -30,6 +34,10 @@ function LoggedOutButtons() {
   );
 }
 
+/**
+ * React component that renders the button for users who are logged in.
+ * @returns {React.ReactNode} The rendered component.
+ */
 function LoggedInButtons() {
   return (
     <Link href="/app" className="w-full">
@@ -42,8 +50,16 @@ function LoggedInButtons() {
     </Link>
   );
 }
+
 export default function Home() {
+  // State hook that stores whether the user is logged in.
   const [logedIn, setLogedIn] = useState(false);
+
+  /**
+   * Asynchronous function that checks if the user has a valid session.
+   * Sets the `logedIn` state based on the result.
+   * @returns {Promise<void>}
+   */
   async function getProfile() {
     const session = await checkSession();
 
@@ -57,6 +73,10 @@ export default function Home() {
     getProfile();
   }, []);
 
+  /**
+   * Boolean value indicating whether the user is logged in.
+   * @type {boolean}
+   */
   const auth = logedIn;
 
   return (

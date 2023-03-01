@@ -11,6 +11,10 @@ export default function SignupForm() {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState('');
   const router = useRouter();
+  /**
+  The configuration object for the SignupForm using the useFormik hook from Formik
+  @type {FormikConfig}
+  */
   const formik = useFormik({
     initialValues: {
       name: '',

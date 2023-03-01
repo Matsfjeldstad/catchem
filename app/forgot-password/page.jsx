@@ -12,6 +12,7 @@ import { supabase } from 'lib/supabaseClient';
 export default function FourOhFour() {
   const [loading, setLoading] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',

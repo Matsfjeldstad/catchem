@@ -12,6 +12,10 @@ import Heart from 'public/icons/heart.svg';
 import Cross from 'public/icons/cross.svg';
 import { supabase } from 'lib/supabaseClient';
 
+/**
+Async function to retrieve all the regions data from PokeAPI.
+@returns An array of regions
+*/
 async function getAllRegions() {
   try {
     const allRegionsData = await fetch(
@@ -25,6 +29,14 @@ async function getAllRegions() {
   }
 }
 
+/**
+
+This component is responsible for rendering the pokemon card with dynamic data.
+It retrieves the data from PokeAPI and Chuck Norris Jokes API to display a random pokemon's details
+along with a joke about that pokemon's type.
+It also provides the functionality to like a pokemon by saving it to the user's liked_pokemon table in Supabase.
+@returns JSX element with a pokemon card containing dynamic data
+*/
 export default function PokemonCard() {
   const [animateState, setAnimateState] = useState(true);
   const [pokemonObject, setPokemonObject] = useState({});
@@ -32,6 +44,14 @@ export default function PokemonCard() {
   const [currentPokedex, setCurrentPokedex] = useState(
     'https://pokeapi.co/api/v2/pokedex/1/',
   );
+
+  /**
+Async function to retrieve pokemon details from PokeAPI and Chuck Norris Jokes API.
+
+It also sets the state of pokemonObject with the retrieved data.
+
+@returns pokemonObject with dynamically generated data.
+*/
   async function getCardDetails() {
     try {
       const pokedexData = await fetch(currentPokedex);
