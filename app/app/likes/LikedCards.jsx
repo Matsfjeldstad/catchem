@@ -36,7 +36,7 @@ export default function LikedCards() {
 
   // }
   return (
-    <div className="grid grid-cols-1 gap-6 text-white md:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col gap-6 text-white md:grid md:grid-cols-2 lg:grid-cols-3">
       {tableData.map((row) => (
         <Link
           href={`/app/likes/${row.id}`}
