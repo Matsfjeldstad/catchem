@@ -33,7 +33,7 @@ export default function page() {
   }
 
   return (
-    <main className=" flex h-full w-full flex-col gap-10 p-4">
+    <main className=" flex h-fit w-full flex-col gap-10 p-4">
       <div className="flex flex-col gap-1">
         <h1 className="text-4xl font-bold">Your liked Pokemons!</h1>
         <p className="text-lg">Here is a list of all your liked pokemons</p>
