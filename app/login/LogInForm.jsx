@@ -40,6 +40,7 @@ export default function LogInForm() {
         router.push('/app');
       } else {
         console.error(error.message);
+        setLoading('');
         setErrorMessage(error.message);
       }
     },

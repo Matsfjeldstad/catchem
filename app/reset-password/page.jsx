@@ -13,6 +13,7 @@ import { supabase } from 'lib/supabaseClient';
 
 export default function page() {
   const [loading, setLoading] = useState('');
+  const [authError, setAuthError] = useState('');
   const formik = useFormik({
     initialValues: {
       password: '',
@@ -28,11 +29,10 @@ export default function page() {
       const { data, error } = await supabase.auth.updateUser({
         password: values.password,
       });
-      if (error) {
-        console.log('error', error);
-      } else {
+      if (data && !error) {
         setLoading('success!');
-        console.log('data', await data);
+      } else {
+        setAuthError(error.message);
       }
     },
   });
@@ -49,6 +49,13 @@ export default function page() {
         className="flex w-full max-w-lg flex-col gap-4"
       >
         <label htmlFor="password" className="w-full">
+          {authError ? (
+            <span className="font-bold text-red-500 duration-200">
+              {authError}
+            </span>
+          ) : (
+            ''
+          )}
           {formik.touched.password && formik.errors.password ? (
             <span className="font-bold text-red-500 duration-200">
               {formik.errors.password}

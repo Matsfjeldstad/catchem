@@ -5,20 +5,18 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // eslint-disable-next-line import/no-unresolved
-import { supabase } from 'lib/supabaseClient';
 import PokemonCard from './PokemonCard';
-import RegionDropdown from './RegionDropdown';
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { checkSession } from '@/utils/auth';
 
 export default function page() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   async function getProfile() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const session = checkSession();
 
-    if (!user) {
+    if (!session) {
       router.push('/login');
     } else {
       setLoading(false);
@@ -33,8 +31,7 @@ export default function page() {
   }
 
   return (
-    <main className=" flex w-full flex-col items-center justify-center overflow-hidden p-4">
-      <RegionDropdown />
+    <main className=" flex w-full flex-col overflow-hidden p-4">
       <PokemonCard />
     </main>
   );
