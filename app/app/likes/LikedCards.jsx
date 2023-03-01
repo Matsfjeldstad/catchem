@@ -36,12 +36,12 @@ export default function LikedCards() {
 
   // }
   return (
-    <div className="grid grid-cols-1 gap-6 text-white md:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col gap-6 text-white md:grid md:grid-cols-2 lg:grid-cols-3">
       {tableData.map((row) => (
         <Link
           href={`/app/likes/${row.id}`}
           key={row.id}
-          className="relative flex h-full w-full items-end justify-center overflow-hidden rounded-3xl bg-jungleHero bg-cover p-6 text-center duration-200 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-darkGray hover:scale-105"
+          className="relative flex h-full min-h-fit w-full items-end justify-center overflow-hidden rounded-3xl bg-jungleHero bg-cover p-6 text-center duration-200 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-darkGray hover:scale-105"
         >
           <div className="z-30 flex flex-col items-center justify-center gap-4">
             <Image

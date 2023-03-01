@@ -6,7 +6,7 @@ import pokeball from '../public/pokeball.svg';
 
 export default function FourOhFour() {
   return (
-    <main className="relative flex h-screen flex-col items-center justify-center gap-6 overflow-hidden text-[#2F2F2F]">
+    <main className="relative flex h-screen flex-col items-center justify-center gap-6 overflow-hidden p-4 text-[#2F2F2F]">
       <h1 className="flex items-center gap-2 text-9xl font-bold text-[#2F2F2F]">
         4
         <span>

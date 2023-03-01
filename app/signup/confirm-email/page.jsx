@@ -10,10 +10,7 @@ export default function FourOhFour() {
       <h3 className="text-5xl font-black">Verify Your Email!</h3>
       <h1 className="max-w-md text-center">
         Almost there! We sent you a verification email. You need to verify to be
-        able to use
-        {' '}
-        <span className=" font-medium italic">CatchEm</span>
-        . Please
+        able to use <span className=" font-medium italic">CatchEm</span>. Please
         check your email!
       </h1>
       <Image
