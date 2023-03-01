@@ -45,7 +45,11 @@ export default function FourOhFour() {
       <h1 className="text-center text-5xl font-black">Forgot your Password?</h1>
       <h3 className="max-w-md text-center">
         {errorMessage ? (
-          <span className="font-bold text-red-800"> {errorMessage} </span>
+          <span className="font-bold text-red-800">
+            {' '}
+            {errorMessage}
+            {' '}
+          </span>
         ) : (
           'Please insert your email connected to your user. You will recive a link to reset the password.'
         )}
