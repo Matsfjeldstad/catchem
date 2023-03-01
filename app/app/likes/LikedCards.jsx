@@ -41,7 +41,7 @@ export default function LikedCards() {
         <Link
           href={`/app/likes/${row.id}`}
           key={row.id}
-          className="relative flex h-full w-full items-end justify-center overflow-hidden rounded-3xl bg-jungleHero bg-cover p-6 text-center duration-200 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-darkGray hover:scale-105"
+          className="relative flex h-full min-h-fit w-full items-end justify-center overflow-hidden rounded-3xl bg-jungleHero bg-cover p-6 text-center duration-200 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-darkGray hover:scale-105"
         >
           <div className="z-30 flex flex-col items-center justify-center gap-4">
             <Image

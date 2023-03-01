@@ -58,15 +58,17 @@ export default function PokemonCard() {
       const randomJokeArray = Math.floor(
         Math.random() * chuckNorrisResponse.total,
       );
-      const fallbackJoke = "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
+      const fallbackJoke =
+        "Chuck Norris will roundhouse kick you to death if you laugh at Chuck Norris jokes. He will also roundhouse kick you to death if you don't laugh at Chuck Norris jokes. The choice is yours";
 
       const currentPokemonName = pokemonResponse.name;
       const currentPokemonType = pokemonResponse.types[0].type.name;
       const currentPokemonWeight = pokemonResponse.weight / 10;
 
-      const currentChuckJoke = chuckNorrisResponse.total > 0
-        ? chuckNorrisResponse.result[randomJokeArray].value
-        : fallbackJoke;
+      const currentChuckJoke =
+        chuckNorrisResponse.total > 0
+          ? chuckNorrisResponse.result[randomJokeArray].value
+          : fallbackJoke;
       const currentPokemonId = pokemonResponse.id;
       const pokemonFirstName = faker.name.firstName();
       const currentPokemonIMG = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${currentPokemonId}.png`;
@@ -210,23 +212,15 @@ export default function PokemonCard() {
         <div>
           <h2 className="text-3xl font-bold">Stats</h2>
           <div>
-            Level:
-            {' '}
-            <span>{pokemonObject.level}</span>
+            Level: <span>{pokemonObject.level}</span>
           </div>
           <div>
             {' '}
-            Type:
-            {' '}
-            <span>{pokemonObject.pokemon_type}</span>
+            Type: <span>{pokemonObject.pokemon_type}</span>
           </div>
           <div>
             {' '}
-            Weight:
-            {' '}
-            <span>{pokemonObject.weight}</span>
-            {' '}
-            kg
+            Weight: <span>{pokemonObject.weight}</span> kg
           </div>
           <div>
             {' '}
@@ -238,9 +232,7 @@ export default function PokemonCard() {
           href="/app/likes"
           className="relative z-20 flex items-center justify-center gap-2 rounded-full border-2 bg-offWhite px-6 py-2 text-darkGray duration-200 hover:scale-105"
         >
-          <Image src={Heart} alt="like" />
-          {' '}
-          Your liked Pokemon
+          <Image src={Heart} alt="like" /> Your liked Pokemon
         </Link>
       </div>
     </section>
